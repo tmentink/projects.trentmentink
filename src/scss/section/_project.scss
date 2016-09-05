@@ -13,6 +13,11 @@
   max-width: 1200px;
 }
 
+.card {
+  max-width: 500px;
+  margin: 2.25rem auto;
+}
+
 // empty placeholder
 .card.invisible {
   visibility: hidden !important;
@@ -22,7 +27,7 @@
   display: inline-block;
   padding: 2.5px 0;
 }
-@media (min-width: 600px) and (max-width: 1024px) {
+@media (min-width: 800px) and (max-width: 1024px) {
 
   .card-link {
     display: block;
@@ -39,19 +44,20 @@
 /* Font
 -------------------------------*/
 .card-title {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .card-subtitle {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .card-text {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .card-link {
-  font-size: 13px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 
@@ -93,7 +99,7 @@
   }
 
   .card-deck-wrapper:hover .card {
-    opacity: 0.65;
+    opacity: 0.5;
   }
 
   .card-deck-wrapper:hover .card:hover {
@@ -102,6 +108,71 @@
 
 }
 
+
+
+// Img Placeholder
+// ===========================================
+
+/* Structure
+-------------------------------*/
+.img-placeholder {
+  position: relative;
+  width: 100%;
+}
+
+// maintain aspect ratio
+.img-placeholder::before {
+  content: "";
+  float: left;
+  padding-bottom: 61.667%;
+}
+
+// clearfix
+.img-placeholder::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+// absolute center icon
+.img-placeholder .fa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+
+/* Color
+-------------------------------*/
+.img-placeholder {
+  background: rgba($black, 0.02);
+}
+
+
+.img-placeholder .fa {
+  color: rgba($black, 0.3);
+}
+
+
+/* Font
+-------------------------------*/
+.img-placeholder .fa {
+  font-size: 25vw;
+}
+
+@media (min-width: 800px) { 
+  .img-placeholder .fa {
+    font-size: 8vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .img-placeholder .fa {
+    font-size: 100px;
+  }
+}
 
 
 

@@ -1,8 +1,8 @@
 
 
-/*=================================
-  config.js
-  =================================*/
+// ===========================================
+// Utility
+// ===========================================
   var myPage = (function(page) {
     "use strict";
 
@@ -11,7 +11,13 @@
       {
         title: "Infinite Scrolling",
         category: "Website",
-        description: "A demo of the infinite scrolling illusion I had on an earlier version of my website.",
+        description: "A demo of the infinite scrolling illusion I had on an earlier version of my website. All images were created by me using Sketchbook Pro.",
+        imgs: [
+          {
+            type: "img",
+            src: "img/projects/infinitescroll.jpg"
+          }
+        ],
         links: [
           {
             href: "/projects/infinite_scroll",
@@ -22,7 +28,13 @@
       {
         title: "USDA Search",
         category: "Website",
-        description: "A simple website to search the USDA nutrient database.",
+        description: "A client-side website that uses ajax to search the USDA nutrient database and display macronutrients. Leverages the browser's local storage to save favorites.",
+        imgs: [
+          {
+            type: "img",
+            src: "img/projects/usda.jpg"
+          }
+        ],
         links: [
           {
             href: "/projects/usda_search",
@@ -37,18 +49,34 @@
       {
         title: "The Frameshop",
         category: "Client",
-        description: "The Frameshop is a family owned business specializing in custom framing.",
+        description: "The Frameshop is a family owned business specializing in custom framing. I worked closely with them to design and develop a brand new mobile-friendly website.",
+        imgs: [
+          {
+            type: "img",
+            src: "img/projects/frameshop.jpg"
+          }
+        ],
         links: [
           {
             href: "http://www.theframeshopsite.com",
             text: "View Website"
+          },
+          {
+            href: "http://old.theframeshopsite.com",
+            text: "View Old Website"
           }
         ]
       },
       {
         title: "modBIAS",
         category: "Gaming",
-        description: "Better Inventory & Saddlebags is a mod I created for The Witcher 3 PC game.",
+        description: "Better Inventory & Saddlebags is a mod I created for The Witcher 3 PC game. It gives all items weight and allows players to store them on their horse. It also includes a custom menu to tweak all the mod's settings.",
+        imgs: [
+          {
+            type: "img",
+            src: "img/projects/modBIAS.jpg"
+          }
+        ],
         links: [
           {
             href: "http://www.nexusmods.com/witcher3/mods/1900/?",
@@ -59,7 +87,13 @@
       {
         title: "Polygon Splitting",
         category: "Javascript",
-        description: "A Google Maps JavaScript API v3 library to split an exisiting polygon into two separate polygons.",
+        description: "A Google Maps JavaScript API v3 library to split an exisiting polygon into two separate polygons. This extends the polygon object to include a split() method which accepts another polygon as a paramter.",
+        imgs: [
+          {
+            type: "img",
+            src: "img/projects/polygonsplitting.jpg"
+          }
+        ],
         links: [
           {
             href: "/projects/polygon_splitting",
@@ -86,96 +120,6 @@
 
 
 // ===========================================
-// Utility
-// ===========================================
-
-  !(function (root) {
-    "use strict";
-
-    /* debounce
-    -------------------------------*/
-    var debounce = function (fn, delay) {
-      if (delay === undefined) { delay = 250; }
-
-      var timer = null;
-      return function () {
-        var context = this, args = arguments;
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-          fn.apply(context, args);
-        }, delay);
-      };
-    }
-
-
-    /* throttle
-    -------------------------------*/
-    var throttle = function(fn, delay) {
-      if (delay === undefined) { delay = 250; }
-
-      var deferTimer,
-          last;
-      return function () {
-        var context = this;
-
-        var now = +new Date,
-            args = arguments;
-        if (last && now < last + delay) {
-          // hold on to it
-          clearTimeout(deferTimer);
-          deferTimer = setTimeout(function () {
-            last = now;
-            fn.apply(context, args);
-          }, delay);
-        } else {
-          last = now;
-          fn.apply(context, args);
-        }
-      };
-    }
-
-
-    /* selector_cache
-    -------------------------------*/
-    if (root.jQuery) {
-      var selector_cache = function() {
-        var elementCache = {};
-
-        var get_from_cache = function( selector, $ctxt, reset ) {
-          if ( "boolean" === typeof $ctxt ) {
-            reset = $ctxt;
-            $ctxt = false;
-          }
-          var cacheKey = $ctxt ? $ctxt.selector + ' ' + selector : selector;
-
-          if ( undefined === elementCache[ cacheKey ] || reset ) {
-            elementCache[ cacheKey ] = $ctxt ? $ctxt.find( selector ) : jQuery( selector );
-          }
-
-          return elementCache[ cacheKey ];
-        };
-
-        get_from_cache.elementCache = elementCache;
-        return get_from_cache;
-      }
-    }
-    
-
-    /* public methods
-    -------------------------------*/
-    root.utility = {
-      debounce: debounce,
-      throttle: throttle
-    };
-
-    if (selector_cache) {
-      root.$cache = new selector_cache();
-    } 
-
-  })(this);
-
-
-// ===========================================
 // Projects
 // ===========================================
   !function(page) {
@@ -188,9 +132,27 @@
       HTML += "<div class='card'><div class='card-header'>";
       HTML += "<h2 class='card-title'>" + project.title + "</h2>";
       HTML += "<h4 class='card-subtitle'>" + project.category + "</h4></div>";
+      
+      // add img 
+      var img = project.imgs[0];
+      switch(img.type) {
+        case "img":
+          HTML += "<img src='" + img.src + "' class='img-fluid'>";
+          break;
+
+        case "icon":
+          HTML += "<div class='img-placeholder'><i class='fa " + img.src + "'></i></div>";
+          break;
+
+        default:
+        HTML += "<div class='img-placeholder'><i class='fa fa-file-code-o'></i></div>";
+          break;
+      }
+
+      // add description
       HTML += "<div class='card-block'><p class='card-text'>" + project.description + "</p>";
 
-      // dynamically add each link
+      // add each link
       for (var l = 0, l_len = project.links.length; l < l_len; l++) {
         var link = project.links[l];
 
@@ -216,7 +178,7 @@
     }
 
     // append html string
-    $cache(".card-deck-wrapper").html(HTML);
+    $(".card-deck-wrapper").html(HTML);
 
   }(myPage);
 

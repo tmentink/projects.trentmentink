@@ -29,6 +29,16 @@ ul ol {
   margin-bottom: 0;
 }
 
+img {
+  vertical-align: middle;
+}
+
+.img-fluid {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 
 // Containers
 // ===========================================
@@ -169,7 +179,7 @@ ul ol {
   border-bottom-left-radius: 0.25rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .card-deck {
     display: table;
     width: 100%;

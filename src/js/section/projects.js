@@ -13,9 +13,27 @@
       HTML += "<div class='card'><div class='card-header'>";
       HTML += "<h2 class='card-title'>" + project.title + "</h2>";
       HTML += "<h4 class='card-subtitle'>" + project.category + "</h4></div>";
+      
+      // add img 
+      var img = project.imgs[0];
+      switch(img.type) {
+        case "img":
+          HTML += "<img src='" + img.src + "' class='img-fluid'>";
+          break;
+
+        case "icon":
+          HTML += "<div class='img-placeholder'><i class='fa " + img.src + "'></i></div>";
+          break;
+
+        default:
+        HTML += "<div class='img-placeholder'><i class='fa fa-file-code-o'></i></div>";
+          break;
+      }
+
+      // add description
       HTML += "<div class='card-block'><p class='card-text'>" + project.description + "</p>";
 
-      // dynamically add each link
+      // add each link
       for (var l = 0, l_len = project.links.length; l < l_len; l++) {
         var link = project.links[l];
 
@@ -41,7 +59,7 @@
     }
 
     // append html string
-    $cache(".card-deck-wrapper").html(HTML);
+    $(".card-deck-wrapper").html(HTML);
 
   }(myPage);
 

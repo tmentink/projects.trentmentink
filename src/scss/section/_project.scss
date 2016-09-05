@@ -1,0 +1,112 @@
+
+// ===========================================
+// Projects
+// ===========================================
+
+// Cards
+// ===========================================
+
+/* Structure
+-------------------------------*/
+.card-deck-wrapper {
+  margin-top: 50px;
+  max-width: 1200px;
+}
+
+// empty placeholder
+.card.invisible {
+  visibility: hidden !important;
+}
+
+.card-link {
+  display: inline-block;
+  padding: 2.5px 0;
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+
+  .card-link {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .card-link + .card-link {
+    margin: 0;
+  }
+
+}
+
+
+/* Font
+-------------------------------*/
+.card-title {
+  font-size: 20px;
+}
+
+.card-subtitle {
+  font-size: 12px;
+}
+
+.card-text {
+  font-size: 16px;
+}
+
+.card-link {
+  font-size: 13px;
+}
+
+
+/* Color
+-------------------------------*/
+.card {
+  background: $white;
+  border-color: rgba(black, 0.2);
+}
+
+.card-header {
+  background: color-shade(white, dark);
+}
+
+.card-title {
+  color: color-shade(grey, xx-dark);
+}
+
+.card-subtitle {
+  color: color-shade(grey);
+}
+
+
+/* Effects
+-------------------------------*/
+
+// siblings fade on hover
+@media (min-width: 1025px) {
+
+  // prevent :hover from triggering in gaps
+  .card-deck-wrapper {
+    visibility: hidden;
+  }
+
+  // make cards visible
+  .card-deck-wrapper .card {
+    visibility: visible;
+    transition: opacity 0.2s ease-in-out 0.1s;
+  }
+
+  .card-deck-wrapper:hover .card {
+    opacity: 0.65;
+  }
+
+  .card-deck-wrapper:hover .card:hover {
+    opacity: 1;
+  }
+
+}
+
+
+
+
+
+
+
+
+

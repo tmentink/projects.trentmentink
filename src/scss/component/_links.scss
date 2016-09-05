@@ -1,0 +1,30 @@
+
+// ===========================================
+// Links
+// ===========================================
+
+// Structure
+// ===========================================
+a {
+  outline: 0;
+  text-decoration: none;
+}
+
+
+// Color
+// ===========================================
+a,
+a:link,
+a:visited {
+  color: $color-link;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: color-shade(link, x-light);
+}
+
+a:active {
+  color: color-shade(link, dark);
+}
+

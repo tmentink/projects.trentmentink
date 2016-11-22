@@ -2,7 +2,7 @@
 // ===========================================
 // Data
 // ===========================================
-  var myPage = (function(page) {
+  var page = (function(page) {
     "use strict";
 
     // Project Data
@@ -33,14 +33,18 @@
       {
         title: "Google Maps Helper",
         category: "Javascript",
-        description: "A library that provides a simple API for interacting with Google Maps. Includes features like automatic storing of objects, call methods on multiple objects and chaining methods.",
+        description: "A javasript library that extends the power of Google Maps while also simplifying the API. Adds new features like chaining methods, string coordinates and new label objects.",
         imgs: [
           {
-            type: "icon",
-            src: "fa-google"
+            type: "img",
+            src: "img/projects/google_maps_helper.jpg"
           }
         ],
         links: [
+          {
+            href: "/projects/google_maps_helper",
+            text: "View Demo"
+          },
           {
             href: "https://www.github.com/tmentink/google.maps_helper",
             text: "View Github"
@@ -49,13 +53,13 @@
       },
       // =======================================
       {
-        title: "Polygon Splitting",
+        title: "Poly - Split",
         category: "Javascript",
-        description: "A Google Maps JavaScript API v3 library to split an exisiting polygon into two separate polygons. This extends the polygon object to include a split() method which accepts another polygon as a parameter.",
+        description: "A Google Maps plugin that extends the polygon object with a new method to easily split it in two. Simply draw a polygon over another and the plugin will split out the difference.",
         imgs: [
           {
             type: "img",
-            src: "img/projects/polygonsplitting.jpg"
+            src: "img/projects/poly_split.jpg"
           }
         ],
         links: [
@@ -117,7 +121,7 @@
         imgs: [
           {
             type: "img",
-            src: "img/projects/infinitescroll.jpg"
+            src: "img/projects/infinite_scroll.jpg"
           }
         ],
         links: [
@@ -132,7 +136,7 @@
     ]; 
 
     return page;
-  })(myPage || {});
+  })(page || {});
 
 
 
@@ -198,7 +202,7 @@
     // append html string
     $(".card-deck-wrapper").html(HTML);
 
-  }(myPage);
+  }(page);
 
 
 

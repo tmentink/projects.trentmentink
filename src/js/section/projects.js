@@ -61,7 +61,7 @@
     // append html string
     $(".card-deck-wrapper").html(HTML);
 
-  }(myPage);
+  }(page);
 
 
 
